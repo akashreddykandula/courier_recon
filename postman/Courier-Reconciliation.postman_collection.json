@@ -1,0 +1,115 @@
+{
+  "info": {
+    "name": "Courier Settlement Reconciliation",
+    "_postman_id": "f4cf6c86-9d6f-4f2c-9152-courier-recon",
+    "description": "Postman-ready API requests for the courier reconciliation engine.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Upload Settlements JSON",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rows\": [\n    {\n      \"awbNumber\": \"AWB2001\",\n      \"settledCodAmount\": 1350,\n      \"chargedWeight\": 1.4,\n      \"forwardCharge\": 65,\n      \"rtoCharge\": 0,\n      \"codHandlingFee\": 12,\n      \"settlementDate\": \"2026-04-08\",\n      \"batchId\": \"BATCH-API-001\"\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/settlements/upload",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "settlements", "upload"]
+        }
+      }
+    },
+    {
+      "name": "Run Reconciliation",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reconciliation/run",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reconciliation", "run"]
+        }
+      }
+    },
+    {
+      "name": "Get Dashboard",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reconciliation/dashboard",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reconciliation", "dashboard"]
+        }
+      }
+    },
+    {
+      "name": "Get Results",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reconciliation/results?status=DISCREPANCY",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reconciliation", "results"],
+          "query": [
+            {
+              "key": "status",
+              "value": "DISCREPANCY"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Job Logs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reconciliation/jobs",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reconciliation", "jobs"]
+        }
+      }
+    },
+    {
+      "name": "Get Notification Logs",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/reconciliation/notifications",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "reconciliation", "notifications"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5050"
+    }
+  ]
+}

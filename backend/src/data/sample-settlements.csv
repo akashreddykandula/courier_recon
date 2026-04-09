@@ -1,0 +1,4 @@
+awbNumber,settledCodAmount,chargedWeight,forwardCharge,rtoCharge,codHandlingFee,settlementDate,batchId
+AWB3001,1200,1.2,55,0,10,2026-04-01,BATCH-CSV-001
+AWB3002,880,0.9,52,0,8,2026-04-02,BATCH-CSV-001
+

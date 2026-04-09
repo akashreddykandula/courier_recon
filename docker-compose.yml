@@ -1,0 +1,62 @@
+services:
+  mongodb:
+    image: mongo:7
+    container_name: courier-recon-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  redis:
+    image: redis:7-alpine
+    container_name: courier-recon-redis
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: courier-recon-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017/courier_recon
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - mongodb
+      - redis
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: courier-recon-worker
+    restart: unless-stopped
+    command: ["npm", "run", "worker"]
+    working_dir: /app/backend
+    env_file:
+      - .env
+    environment:
+      MONGODB_URI: mongodb://mongodb:27017/courier_recon
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      - mongodb
+      - redis
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: courier-recon-frontend
+    restart: unless-stopped
+    environment:
+      VITE_PROXY_TARGET: http://backend:5050
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+
+volumes:
+  mongo_data:

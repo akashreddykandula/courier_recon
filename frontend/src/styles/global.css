@@ -1,0 +1,367 @@
+:root {
+  font-family: "Segoe UI", "Helvetica Neue", sans-serif;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 30%),
+    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  padding: 32px;
+}
+
+.hero {
+  margin-bottom: 24px;
+  padding: 32px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: #f8fafc;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #93c5fd;
+}
+
+.hero h1 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.hero-copy {
+  max-width: 760px;
+  margin-top: 14px;
+  color: rgba(248, 250, 252, 0.82);
+}
+
+.banner {
+  margin-bottom: 18px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(59, 130, 246, 0.14);
+}
+
+.summary-grid,
+.layout-grid,
+.log-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.summary-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-bottom: 20px;
+}
+
+.layout-grid {
+  grid-template-columns: 360px minmax(0, 1fr);
+  align-items: start;
+  margin-bottom: 20px;
+}
+
+.log-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.stack {
+  display: grid;
+  gap: 20px;
+}
+
+.panel {
+  padding: 20px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  box-shadow: 0 16px 36px rgba(148, 163, 184, 0.18);
+  backdrop-filter: blur(10px);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.panel-header h2,
+.panel-header p {
+  margin: 0;
+}
+
+.summary-card {
+  padding: 20px;
+  border-radius: 24px;
+  color: #f8fafc;
+}
+
+.summary-card span {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.summary-card strong {
+  font-size: 2.4rem;
+}
+
+.summary-card--matched {
+  background: linear-gradient(135deg, #047857, #10b981);
+}
+
+.summary-card--discrepancy {
+  background: linear-gradient(135deg, #b91c1c, #f97316);
+}
+
+.summary-card--pending {
+  background: linear-gradient(135deg, #854d0e, #f59e0b);
+}
+
+.segmented-control {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.segmented-control button,
+.primary-button,
+.secondary-button,
+.link-button {
+  cursor: pointer;
+  border: none;
+}
+
+.segmented-control button {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: transparent;
+}
+
+.segmented-control button.active {
+  background: #0f172a;
+  color: #fff;
+}
+
+.upload-form {
+  display: grid;
+  gap: 14px;
+}
+
+.file-dropzone {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  padding: 20px;
+  border: 2px dashed rgba(59, 130, 246, 0.3);
+  border-radius: 22px;
+  background: rgba(239, 246, 255, 0.8);
+  color: #1d4ed8;
+  text-align: center;
+}
+
+.file-dropzone input {
+  display: none;
+}
+
+textarea,
+input,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.38);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.filters-bar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.filters-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+label span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.86rem;
+  color: #475569;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.primary-button {
+  background: #1d4ed8;
+  color: #fff;
+}
+
+.secondary-button {
+  background: #0f172a;
+  color: #fff;
+}
+
+.link-button {
+  padding: 0;
+  color: #1d4ed8;
+  background: transparent;
+}
+
+.table-wrapper {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 14px 10px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  text-align: left;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.status-pill--matched,
+.status-pill--success,
+.status-pill--sent,
+.status-pill--retried {
+  background: rgba(16, 185, 129, 0.15);
+  color: #047857;
+}
+
+.status-pill--discrepancy,
+.status-pill--failed {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+.status-pill--pending_review {
+  background: rgba(245, 158, 11, 0.15);
+  color: #b45309;
+}
+
+.log-list,
+.detail-list {
+  display: grid;
+  gap: 12px;
+}
+
+.log-item,
+.detail-item {
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(248, 250, 252, 0.92);
+  border: 1px solid rgba(226, 232, 240, 0.92);
+}
+
+.log-item__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(15, 23, 42, 0.56);
+}
+
+.modal-card {
+  width: min(760px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+  padding: 24px;
+  border-radius: 26px;
+  background: #fff;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.empty-state,
+.error-text {
+  color: #b91c1c;
+}
+
+@media (max-width: 1024px) {
+  .layout-grid,
+  .summary-grid,
+  .log-grid,
+  .filters-grid,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-shell {
+    padding: 18px;
+  }
+
+  .hero {
+    padding: 24px;
+  }
+}
