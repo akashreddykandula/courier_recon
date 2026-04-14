@@ -146,6 +146,63 @@ docker compose down
 docker compose down -v
 ```
 
+## Render Deployment
+
+This repo includes `render.yaml` for a Render Blueprint deployment.
+
+Recommended hosted services:
+
+- MongoDB: MongoDB Atlas
+- Redis: Render Key Value from the Blueprint
+- Backend API: Render Web Service
+- Worker: Render Background Worker
+- Frontend: Render Static Site
+
+Steps:
+
+1. Push this repo to GitHub.
+2. Create a MongoDB Atlas cluster.
+3. Copy your Atlas connection string, for example:
+
+```bash
+mongodb+srv://<username>:<password>@<cluster-url>/courier_recon?retryWrites=true&w=majority
+```
+
+4. In Render, create a new Blueprint from this GitHub repo.
+5. Render will ask for synced secret values from `render.yaml`.
+6. Set these values:
+
+```bash
+MONGODB_URI=<your MongoDB Atlas connection string>
+NOTIFICATION_WEBHOOK_URL=<your webhook.site or mock endpoint URL>
+FRONTEND_URL=https://<your-frontend-service>.onrender.com
+VITE_API_BASE_URL=https://<your-backend-service>.onrender.com/api
+```
+
+7. After the backend deploys, update frontend environment variable `VITE_API_BASE_URL` if the generated backend URL differs from your expected URL.
+8. Redeploy the frontend static site after updating `VITE_API_BASE_URL`.
+
+Deployment notes:
+
+- The backend listens on Render's assigned `PORT`.
+- `FRONTEND_URL` supports comma-separated origins, for example:
+
+```bash
+https://your-frontend.onrender.com,http://localhost:5173
+```
+
+- The worker runs separately using:
+
+```bash
+cd backend && npm run worker
+```
+
+- Seed production/demo data only if needed:
+
+```bash
+npm run seed --workspace backend
+```
+
 ## Queue Setup Notes
 
 - BullMQ queue name: `discrepancy-notifications`

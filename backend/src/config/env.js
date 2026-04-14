@@ -8,5 +8,9 @@ export const env = {
   mongoUri: process.env.MONGODB_URI || 'mongodb://localhost:27017/courier_recon',
   redisUrl: process.env.REDIS_URL || 'redis://127.0.0.1:6379',
   webhookUrl: process.env.NOTIFICATION_WEBHOOK_URL || 'https://webhook.site/your-id',
-  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173'
+  frontendUrl: process.env.FRONTEND_URL || 'http://localhost:5173',
+  frontendUrls: (process.env.FRONTEND_URL || 'http://localhost:5173')
+    .split(',')
+    .map((url) => url.trim())
+    .filter(Boolean)
 };

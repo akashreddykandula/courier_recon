@@ -10,7 +10,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: env.frontendUrl
+    origin: env.frontendUrls
   })
 );
 app.use(express.json({ limit: '2mb' }));
@@ -27,4 +27,3 @@ app.use('/api/reconciliation', reconciliationRoutes);
 app.use(errorHandler);
 
 export default app;
-

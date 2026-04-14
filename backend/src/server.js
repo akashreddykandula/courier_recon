@@ -7,7 +7,7 @@ const startServer = async () => {
   await connectDb();
   startReconciliationScheduler();
 
-  app.listen(env.port, () => {
+  app.listen(env.port, '0.0.0.0', () => {
     console.log(`Backend running on port ${env.port}`);
   });
 };
